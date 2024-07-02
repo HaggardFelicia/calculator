@@ -1,64 +1,109 @@
-/**--------------------------------------------------------
+/**-------------------------------------------------
  * ?                                ABOUT
  * @author         :  Felicia Haggard
  * @email          :  haggardwebdev@gmail.com
  * @repo           :  HaggardFelicia
  * @createdOn      :  06/26/2024
  * @description    :  Tailwind CSS global styles
- *--------------------------------------------------------**/
+ *-------------------------------------------------**/
 
  /**---------------------
   * *       IMPORTS
   *----------------------**/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/**---------------------
- * *       Layout Page
- *-----------------------**/
- /* setting bg color and margin for pages */
-.body{
-  @apply bg-neutral-400 m-6 h-[100vh];
-  font-family: playfair;
-}
-/* setting header color, font, font size, font color, and layout */
-.header{
-  @apply bg-neutral-700 text-neutral-300 flex items-center justify-between px-4 py-5 text-lg;
-}
-/* header logo */
-.headerlogo{
-  @apply  bg-gradient-to-b from-emerald-800 to-emerald-100 bg-clip-text text-transparent text-3xl font-bold hover:cursor-pointer;
-}
-/* footer */
-.footer{
-  @apply bg-neutral-700 text-neutral-300 text-center py-5;
-}
-
 /**----------------------
  * *       font Styles
  *-----------------------**/
+
+ /* imports font from fonts folder */
  @font-face {
   font-family: playfair;
   src: url(/fonts/PlayfairDisplay-VariableFont_wght.ttf);
  }
  .font{
-  font-family: playfair;
+  @apply font-playfair;
+  font-family: playfair, 'sans-serif';
  }
 
 /**----------------------
- * *       Page Styles
- *-----------------------**/
- /* calculator body */
- .calculatorBody{
-  @apply bg-neutral-950 shadow-custom items-center justify-center my-[4rem] md:my-[6rem] p-4 rounded-xl h-[60vh] max-w-sm md:max-w-4xl lg:max-w-6xl mx-auto;
- }
+  * *       Presets
+  *-----------------------**/
 
- /* add, subtract, multiply, and divide buttons */
-.functionButtons{
-  @apply bg-emerald-800 text-neutral-300 text-center py-1 px-3 md:py-2 md:px-4 rounded-md hover:bg-neutral-700 hover:cursor-pointer flex my-2;
+*, *::before, *::after {
+  @apply box-border;
 }
-/* button text color and size */
-.buttonText{
-  @apply text-neutral-300 text-lg md:text-2xl;
+
+/**---------------------
+ * *       Layout Page
+ *-----------------------**/
+
+ /* body: sets 
+ bg color and margin for pages */
+.body{
+  @apply bg-neutral-400 max-h-[100vh] scroll-auto;
+}
+/* header sets: 
+color, font, font size, font color, and layout */
+.header{
+  @apply bg-neutral-700 text-neutral-300 flex items-center justify-between px-4 py-5 text-lg mb-2;
+}
+/* header logo: sets 
+felicia logo with a gradient and link to github account */
+.headerlogo{
+  @apply  bg-gradient-to-b from-emerald-800 to-emerald-100 bg-clip-text text-transparent text-3xl font-bold hover:cursor-pointer;
+}
+/* footer: sets
+bg color, text color, padding, width, sets position*/
+.footer{
+  @apply bg-neutral-700 text-neutral-300 text-center py-5 w-[100%] relative bottom-0;
+}
+
+/* sets span to 1 */
+.span-one{
+  @apply col-span-1;
+}
+/* sets span to 2 */
+.span-two{
+  @apply col-span-2;
+}
+
+/**-----------------------
+ * *       Calculator Styles
+ *------------------------**/
+
+  /* calculator alignment: sets 
+  calculator alignment, height, padding, and margin */
+.calculator-alignment{
+  @apply  rounded-lg p-5 mb-8 h-screen flex justify-center items-center;
+}
+/* calculator: sets
+color, border radius shadow, and padding */
+.calculator{
+  @apply bg-neutral-700 text-neutral-700 rounded-2xl shadow-lg p-6 max-w-[80%] font-playfair font-black text-2xl;
+}
+/* calculator input: sets
+alignment, text size, color, background color, and radius */
+.calculator-display{
+  @apply w-full mb-4 p-2 lg:p-4 text-2xl text-right bg-neutral-400 rounded-lg;
+}
+/* calculator grid: sets
+grid, grid columns, grid gap */
+.calculator-grid{
+  @apply grid grid-cols-4 gap-1 lg:gap-2 w-full;
+}
+/* calculator grid buttons: sets
+  button bg color, text color, font size, font weight, border radius, button hover, and aspect ratio, and max height*/
+.calculator-grid>button{
+  @apply bg-neutral-400 text-neutral-700 text-2xl font-black rounded-lg hover:bg-neutral-600
+  hover:text-neutral-300 max-h-[70px] aspect-square;
+}
+/* calculator clear button: sets
+clear button bg color, text color, border radius, button hover and letter spacing*/
+.calculator-clear{
+  @apply mt-4 w-full p-2 bg-red-500 text-neutral-300 rounded-lg hover:bg-red-700 tracking-wider;
 }
